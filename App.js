@@ -1,15 +1,19 @@
-import React, { useState } from 'react'
-import { StyleSheet, Text, View, AsyncStorage } from 'react-native'
-import { getTasks, addTask, deleteTask, updateTask } from './utils/taskManagement'
+import React from 'react'
+import { StyleSheet, SafeAreaView, View } from 'react-native'
+import { TasksContextProvider } from './context/TasksContext'
+import TasksList from './components/TasksList'
+import Form from './components/Form'
 
-export default function App() {
-  const [tasks, setTasks] = useState(await getTasks())
-  const [task, setTask] = useState({ description: '' })
-
+export default () => {
   return (
-    <View style={styles.container}>
-      <Text>Hello Wyncode!</Text>
-    </View>
+    <TasksContextProvider>
+      <SafeAreaView>
+        <View style={{padding: 10}}>
+          <TasksList />
+          <Form />
+        </View>
+      </SafeAreaView>
+    </TasksContextProvider>
   )
 }
 
