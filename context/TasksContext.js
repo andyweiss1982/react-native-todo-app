@@ -34,7 +34,7 @@ export const TasksContextProvider = ({ children }) => {
         completed: false,
         id: String(Number(new Date()))
       }
-      storedTasks.push(newTask)
+      storedTasks.unshift(newTask)
       await AsyncStorage.setItem('TASKS', JSON.stringify(storedTasks))
       setTasks(storedTasks)
     } catch (error) {

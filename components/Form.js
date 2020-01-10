@@ -7,13 +7,25 @@ export default () => {
   const [description, setDescription] = useState('')
   return(
     <TextInput
-      style={{ height: 40, width: '100%', borderColor: 'gray', borderWidth: 1 }}
+      style={{
+        width: '100%',
+        borderColor: 'gray',
+        borderWidth: 1,
+        padding: 10,
+        marginVertical: 10,
+        backgroundColor: 'white'
+      }}
       onChangeText={text => setDescription(text)}
       value={description}
       onSubmitEditing={async () => {
-        await addTask(description)
-        setDescription('')
+        if (description) {
+          setDescription('')
+          await addTask(description)
+        }
       }}
+      returnKeyType="done"
+      placeholder="Add a task..."
+      enablesReturnKeyAutomatically={true}
     />
   )
 }
