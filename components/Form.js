@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react'
-import { TextInput } from 'react-native'
+import { TextInput, StyleSheet } from 'react-native'
 import { TasksContext } from '../context/TasksContext'
 
 export default () => {
@@ -7,14 +7,7 @@ export default () => {
   const [description, setDescription] = useState('')
   return(
     <TextInput
-      style={{
-        width: '100%',
-        borderColor: 'gray',
-        borderWidth: 1,
-        padding: 10,
-        marginVertical: 10,
-        backgroundColor: 'white'
-      }}
+      style={styles.textInput}
       onChangeText={text => setDescription(text)}
       value={description}
       onSubmitEditing={async () => {
@@ -29,4 +22,15 @@ export default () => {
     />
   )
 }
+
+const styles = StyleSheet.create({
+  textInput: {
+    width: '100%',
+    borderColor: 'gray',
+    borderWidth: 1,
+    padding: 10,
+    marginVertical: 10,
+    backgroundColor: 'white'
+  }
+})
 

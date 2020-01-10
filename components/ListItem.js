@@ -1,30 +1,18 @@
 import React, { useContext } from 'react'
 import { TasksContext } from '../context/TasksContext'
-import { Text, View, Button, Alert } from 'react-native'
+import { Text, View, Button, Alert, StyleSheet } from 'react-native'
 
 export default props => {
   const { updateTask, deleteTask } = useContext(TasksContext)
+  const textDecorationLine = props.completed ? "line-through" : "none"
   return(
-    <View style={{
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      margin: 10,
-      paddingHorizontal: 10
-    }}>
-      <View style={{
-        width: '80%',
-        justifyContent: 'center'
-      }}>
-        <Text style={{
-          textDecorationLine: props.completed ? "line-through" : "none"
-        }}>
+    <View style={styles.listItem}>
+      <View style={styles.textWrapper}>
+        <Text style={{textDecorationLine}}>
           {props.description}
         </Text>
       </View>
-      <View style={{
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-      }}>
+      <View style={styles.buttonsWrapper}>
         <Button
           title={props.completed ? "✅" : "🔲"}
           color="white"
@@ -56,3 +44,20 @@ export default props => {
     </View>
   )
 }
+
+const styles = StyleSheet.create({
+  listItem: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    margin: 10,
+    paddingHorizontal: 10
+  },
+  textWrapper: {
+    width: '80%',
+    justifyContent: 'center'
+  },
+  buttonsWrapper: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  }
+})

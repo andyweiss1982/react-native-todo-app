@@ -25,6 +25,8 @@
     ],
     "ios": {
       "supportsTablet": true
-    }
+    },
+    "description": "React Native Todo App",
+    "githubUrl": "https://github.com/andyweiss1982/react-native-todo-app"
   }
 }
